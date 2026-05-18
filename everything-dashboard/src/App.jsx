@@ -95,7 +95,7 @@ function IntroScreen({ onNext }) {
         </main>
         <div className="bg-black text-white p-8 md:p-12 rounded-t-[2.5rem] mt-auto mx-2 md:mx-6">
           <div className="flex justify-between items-center opacity-80 text-sm">
-            <span>Â© 2026 Everything Platform</span>
+            <span>© 2026 Everything Platform</span>
             <span>Based on Minimalist Design Principles</span>
           </div>
         </div>
@@ -248,7 +248,7 @@ const dmvModules = [
                 <h4 className="font-bold text-lg text-black mb-2">Interval Scale</h4>
                 <p className="mb-2">Now we introduce precise mathematical differences. This is ordered data with exactly equal intervals between points, but crucially, it lacks a true zero. A "true zero" means the absolute absence of the thing being measured.</p>
                 <p className="text-sm mb-1"><strong>Properties:</strong> Has order, has equal intervals, but NO true zero.</p>
-                <p className="text-sm text-gray-500 italic">Examples: Temperature in Celsius or Fahrenheit (0Â°C does not mean "no temperature", it is just a point on the scale), or Calendar years.</p>
+                <p className="text-sm text-gray-500 italic">Examples: Temperature in Celsius or Fahrenheit (0°C does not mean "no temperature", it is just a point on the scale), or Calendar years.</p>
              </div>
              <div className="p-5 border border-gray-200 rounded-xl bg-gray-50">
                 <h4 className="font-bold text-lg text-black mb-2">Ratio Scale</h4>
@@ -329,7 +329,7 @@ const dmvModules = [
               <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">5</div>
               <h3 className="text-2xl font-bold text-black mb-3">Data Discretization (and Concept Hierarchy)</h3>
               <p className="mb-4">Sometimes, highly precise continuous data is too complex for clear analysis. Data Discretization converts continuous numeric values into simplified, discrete intervals or categories. This greatly simplifies data representation and enhances interpretability.</p>
-              <p className="text-sm mb-3 text-gray-500 italic bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>Real-world Example:</strong> Instead of analyzing every exact age (19, 20, 21...), we can discretize the Age attribute into categories like "Young", "Adult", and "Senior". Similarly, continuous Marks can be converted into Grades (e.g., â‰¥ 75 is "Excellent", 50â€“74 is "Good", and &lt; 50 is "Poor").</p>
+              <p className="text-sm mb-3 text-gray-500 italic bg-gray-50 p-3 rounded-lg border border-gray-100"><strong>Real-world Example:</strong> Instead of analyzing every exact age (19, 20, 21...), we can discretize the Age attribute into categories like "Young", "Adult", and "Senior". Similarly, continuous Marks can be converted into Grades (e.g., ≥ 75 is "Excellent", 50–74 is "Good", and &lt; 50 is "Poor").</p>
               <p className="text-sm border-l-2 border-black pl-3 py-1"><strong>Concept Hierarchy Generation:</strong> Related to discretization, this involves replacing low-level data with higher-level concepts, such as converting a highly specific "City" into a broader "State" or "Country".</p>
             </div>
           </div>
@@ -338,7 +338,7 @@ const dmvModules = [
         <div className="mt-12 bg-black text-white p-8 rounded-3xl">
           <h4 className="font-bold text-xl mb-3">Outcome</h4>
           <p className="text-gray-300 leading-relaxed">
-            Upon the successful execution of the preprocessing pipelineâ€”comprising Cleaning, Integration, Transformation, Reduction, and Discretizationâ€”the data is classified as <strong>"Ready for Analysis."</strong> At this stage, the dataset is refined, consistent, and structured appropriately for ingestion by machine learning models, data mining algorithms, and visualization frameworks to facilitate informed decision-making.
+            Upon the successful execution of the preprocessing pipeline—comprising Cleaning, Integration, Transformation, Reduction, and Discretization—the data is classified as <strong>"Ready for Analysis."</strong> At this stage, the dataset is refined, consistent, and structured appropriately for ingestion by machine learning models, data mining algorithms, and visualization frameworks to facilitate informed decision-making.
           </p>
         </div>
       </div>
@@ -604,6 +604,7 @@ CREATE TABLE Enrollment (
     )
   }
 ];
+
 // --- DATA CONTENT FROM DMV UNIT 2 ---
 const unit2Modules = [
   {
@@ -637,7 +638,7 @@ const unit2Modules = [
                <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
                <div>
                  <h4 className="font-bold text-lg text-black mb-1">Identifying Unusual Data Points (Outliers and Errors)</h4>
-                 <p className="text-sm">Real-world data is messy, my student. EDA is absolutely crucial because it helps you identify unusual data points within your dataset. We call these extreme values "outliers," and they deviate significantly from your other observations, often caused by measurement mistakes, data entry errors, or natural variations. By spotting these outliersâ€”along with revealing missing values and data typesâ€”EDA allows you to properly clean and preprocess the data to guarantee high data quality.</p>
+                 <p className="text-sm">Real-world data is messy, my student. EDA is absolutely crucial because it helps you identify unusual data points within your dataset. We call these extreme values "outliers," and they deviate significantly from your other observations, often caused by measurement mistakes, data entry errors, or natural variations. By spotting these outliers—along with revealing missing values and data types—EDA allows you to properly clean and preprocess the data to guarantee high data quality.</p>
                </div>
             </div>
             <div className="flex gap-4 items-start">
@@ -713,7 +714,7 @@ const unit2Modules = [
               <p className="text-sm mb-3">Now, you analyze the underlying math of your dataset to select appropriate analysis methods and spot issues.</p>
               <ul className="list-disc pl-5 text-sm space-y-1 text-gray-600">
                 <li>You must calculate summary statistics for your numerical variables, such as the mean, median, mode, standard deviation, skewness, and kurtosis.</li>
-                <li>This provides a complete overview of the dataâ€™s distribution, central tendency, and variability, helping you identify irregular patterns.</li>
+                <li>This provides a complete overview of the data’s distribution, central tendency, and variability, helping you identify irregular patterns.</li>
               </ul>
             </div>
 
@@ -736,7 +737,7 @@ const unit2Modules = [
               <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
                 <li>For <strong>categorical variables</strong>, you will create frequency tables, bar plots, and pie charts to understand category distributions and spot imbalances.</li>
                 <li>For <strong>numerical variables</strong>, you will generate histograms, box plots, violin plots, and density plots to visualize spread, shape, and outliers.</li>
-                <li>To explore <strong>relationships</strong> between multiple variables, you will use scatter plots, correlation matrices, and statistical tests like Pearsonâ€™s or Spearmanâ€™s correlation coefficients.</li>
+                <li>To explore <strong>relationships</strong> between multiple variables, you will use scatter plots, correlation matrices, and statistical tests like Pearson’s or Spearman’s correlation coefficients.</li>
               </ul>
             </div>
 
@@ -851,7 +852,7 @@ const unit2Modules = [
             <li><strong>Correlation Coefficients:</strong> This measures exactly how strongly two variables are related to one another.
                <ul className="list-circle pl-5 mt-1 space-y-1">
                  <li><strong>Pearson Correlation (<code className="font-mono bg-gray-100 px-1 rounded">r</code>):</strong> This is your go-to metric for measuring strictly <em>linear relationships</em> between two quantitative variables. The value varies from -1 (strong negative correlation) to +1 (strong positive correlation).</li>
-                 <li><strong>Spearmanâ€™s Rank (<code className="font-mono bg-gray-100 px-1 rounded">Ï</code>):</strong> If your data is ordinal or the relationship is non-linear, you use Spearman's Rank to assess <em>monotonic relationships</em> (meaning the variables tend to move in the same relative direction, but not necessarily at a constant, straight-line rate).</li>
+                 <li><strong>Spearman’s Rank (<code className="font-mono bg-gray-100 px-1 rounded">ρ</code>):</strong> If your data is ordinal or the relationship is non-linear, you use Spearman's Rank to assess <em>monotonic relationships</em> (meaning the variables tend to move in the same relative direction, but not necessarily at a constant, straight-line rate).</li>
                </ul>
             </li>
             <li><strong>Covariance:</strong> This measures how two variables change together. However, as an architect, you will often supplement this with the correlation coefficient because correlation gives you a much clearer, standardized view of the relationship.</li>
@@ -975,14 +976,14 @@ const unit2Modules = [
                   <p className="text-sm mb-1">This is the gold standard.</p>
                   <ul className="list-circle pl-5 text-sm text-gray-600 space-y-1 mt-2">
                     <li>First, you calculate the IQR by subtracting the 1st Quartile from the 3rd Quartile (<code className="font-mono bg-white px-1 border border-gray-200 rounded">IQR = Q3 - Q1</code>).</li>
-                    <li>A data point is officially an outlier if it falls below the <strong>Lower Limit</strong> (<code className="font-mono bg-white px-1 border border-gray-200 rounded">Q1 - 1.5 Ã— IQR</code>) or above the <strong>Upper Limit</strong> (<code className="font-mono bg-white px-1 border border-gray-200 rounded">Q3 + 1.5 Ã— IQR</code>).</li>
+                    <li>A data point is officially an outlier if it falls below the <strong>Lower Limit</strong> (<code className="font-mono bg-white px-1 border border-gray-200 rounded">Q1 - 1.5 × IQR</code>) or above the <strong>Upper Limit</strong> (<code className="font-mono bg-white px-1 border border-gray-200 rounded">Q3 + 1.5 × IQR</code>).</li>
                   </ul>
                 </li>
                 <li className="bg-gray-50 p-4 rounded-xl border border-gray-100">
                   <strong className="text-black block mb-2">The Z-Score Method:</strong>
                   <p className="text-sm mb-1">This measures how many standard deviations a data point is away from the mean.</p>
                   <ul className="list-circle pl-5 text-sm text-gray-600 space-y-1 mt-2">
-                    <li>The formula is <code className="font-mono bg-white px-1 border border-gray-200 rounded">Z = (X - Î¼) / Ïƒ</code>.</li>
+                    <li>The formula is <code className="font-mono bg-white px-1 border border-gray-200 rounded">Z = (X - μ) / σ</code>.</li>
                     <li>If a point has a Z-score <strong>greater than 3</strong> or <strong>less than -3</strong>, it is mathematically classified as an outlier.</li>
                   </ul>
                 </li>
@@ -1285,6 +1286,8 @@ function DashboardScreen({ subject, onBack }) {
   // State to track which module is selected in the sidebar
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
 
+  const activeData = subject === 'Unit 2: EDA and Visualization Using R' ? unit2Modules : dmvModules;
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <header className="border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-md z-50">
@@ -1331,8 +1334,8 @@ function DashboardScreen({ subject, onBack }) {
           </div>
 
           <nav className="space-y-1">
-            {/* Dynamically render sidebar items based on dmvModules array */}
-            {dmvModules.map((module, idx) => (
+            {/* Dynamically render sidebar items based on activeData array */}
+            {activeData.map((module, idx) => (
                <SidebarItem 
                  key={module.id}
                  title={module.title} 
@@ -1354,28 +1357,28 @@ function DashboardScreen({ subject, onBack }) {
           <div className="max-w-4xl mx-auto space-y-8">
             
             <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
-                <span>Unit 1</span>
+                <span>{subject?.split(':')[0] || 'Unit'}</span>
                 <ChevronRight size={14} />
                 <span>Fundamentals</span>
                 <ChevronRight size={14} />
-                <span className="text-black font-medium">{dmvModules[activeModuleIndex].title}</span>
+                <span className="text-black font-medium">{activeData[activeModuleIndex].title}</span>
             </div>
 
             {/* Dynamic Content Container */}
             <div className="bg-white rounded-[2rem] p-8 md:p-12 border border-gray-100 shadow-sm">
-               {dmvModules[activeModuleIndex].content}
+               {activeData[activeModuleIndex].content}
             </div>
 
             {/* Progress / Completion Block at the bottom */}
-            {activeModuleIndex === dmvModules.length - 1 && (
+            {activeModuleIndex === activeData.length - 1 && (
               <div className="bg-white border border-gray-100 rounded-[2rem] p-8 mt-12 flex flex-col md:flex-row items-center justify-between text-center md:text-left shadow-sm">
                 <div className="flex items-center gap-6 flex-col md:flex-row">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0">
                     <CheckCircle2 size={32} />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-medium tracking-tight mb-1">Unit 1 Completed!</h2>
-                    <p className="text-gray-500 text-sm">You have reviewed all modules in Data Visualization and Modeling Fundamentals.</p>
+                    <h2 className="text-2xl font-medium tracking-tight mb-1">{subject?.split(':')[0] || 'Unit'} Completed!</h2>
+                    <p className="text-gray-500 text-sm">You have reviewed all modules in this chapter.</p>
                   </div>
                 </div>
                 <div className="mt-6 md:mt-0">
