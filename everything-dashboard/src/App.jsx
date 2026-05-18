@@ -110,6 +110,7 @@ function SubjectSelectionScreen({ onBack, onSelect }) {
     { id: 2, title: 'Unit 2: EDA and Visualization Using R', category: 'Chapter 2' },
     { id: 3, title: 'Unit 3: Regression, Classification & Clustering', category: 'Chapter 3' },
     { id: 4, title: 'Unit 4: Advanced Data Visualization', category: 'Chapter 4' },
+    { id: 5, title: 'Unit 5: Data Modeling in Power BI', category: 'Chapter 5' },
   ];
 
   return (
@@ -2223,17 +2224,412 @@ const unit4Modules = [
   }
 ];
 
+// --- DATA CONTENT FROM DMV UNIT 5 ---
+const unit5Modules = [
+  {
+    id: 'u5m1',
+    title: '1. Power BI Layers',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Introduction & Understanding the Power BI Layers</h2>
+          <p className="mb-4">We will dissect the three primary layers of Power BI that turn raw data into insights.</p>
+        </div>
+
+        <div className="space-y-6 border-t border-gray-100 pt-6">
+           <div className="bg-white border border-gray-200 p-6 rounded-3xl shadow-sm">
+              <h3 className="text-xl font-bold text-black mb-3 flex items-center gap-2">
+                 <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                 The Data Preparation Layer (Power Query)
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">This is the absolute first step in your Power BI workflow. Raw data is messy, and if you feed garbage into your model, you will get garbage out. In this layer, you extract, clean, and transform raw data into a structured format that is ready for analysis.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">Data Connectivity:</strong> You first connect to diverse external data sources, whether they are Excel files, SQL Server databases, APIs, or cloud services.</li>
+                <li><strong className="text-black">Data Cleaning:</strong> Using the Power Query Editor, you rigorously clean the dataset. This involves handling errors, replacing <code className="font-mono bg-gray-100 px-1 rounded">NULL</code> or missing values, and completely removing duplicate rows or irrelevant data points.</li>
+                <li><strong className="text-black">Data Transformation:</strong> You reshape the data to fit your needs. This includes changing data types (like ensuring a revenue column is set to currency), splitting combined data into multiple columns, and extracting specific text.</li>
+                <li><strong className="text-black">Data Integration (Merge & Append):</strong> You consolidate data from multiple sources. You will use <em>Merge Queries</em> to horizontally join two tables based on a common key column (similar to a SQL join), or use <em>Append Queries</em> to vertically stack tables on top of each other to add more rows.</li>
+              </ul>
+           </div>
+
+           <div className="bg-white border border-gray-200 p-6 rounded-3xl shadow-sm">
+              <h3 className="text-xl font-bold text-black mb-3 flex items-center gap-2">
+                 <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                 The Data Model Layer (The Analytical Brain)
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">Once your data is perfectly clean, it moves into the Data Model Layer. This is where you architect the actual structure of your database to ensure efficient data storage and extremely fast query performance.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">Creating Relationships:</strong> You connect your multiple cleaned tables together by defining strict relationships (such as one-to-many or many-to-one).</li>
+                <li><strong className="text-black">Designing Schemas:</strong> You organize these connected tables into optimized analytical structures. As an architect, your absolute preferred design here should be the <em>Star Schema</em>, where a central fact table is surrounded by dimension tables.</li>
+                <li><strong className="text-black">Calculations (DAX):</strong> You use Data Analysis Expressions (DAX) to build custom mathematical logic directly into the model. You will create <em>calculated columns</em> for row-by-row math and dynamic <em>measures</em> for complex aggregations.</li>
+              </ul>
+              <div className="mt-4 p-3 bg-gray-50 border-l-4 border-black text-sm italic text-gray-700">
+                <strong>The Ultimate Purpose:</strong> A perfectly designed data model guarantees faster data exploration, precise reporting, and immediate dashboard performance.
+              </div>
+           </div>
+
+           <div className="bg-white border border-gray-200 p-6 rounded-3xl shadow-sm">
+              <h3 className="text-xl font-bold text-black mb-3 flex items-center gap-2">
+                 <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                 The Data Visualization (Report) Layer
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">This is the final layer. This is exactly what the executives and stakeholders will see. Here, you convert the complex mathematical model into highly interactive visual insights.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">Interactive Reports:</strong> You build comprehensive reports using various visuals like bar charts, line graphs, pie charts, matrices, and geographical maps. You empower the user with interactive controls like slicers, filters, drill-downs, and drill-throughs so they can freely explore the data.</li>
+                <li><strong className="text-black">Dashboards (The Command Center):</strong> A dashboard takes the most critical metrics from your reports and consolidates them into a <em>single screen view</em>. They combine visuals and KPI cards to provide a real-time snapshot of business performance to help managers make incredibly fast decisions.</li>
+              </ul>
+              <div className="mt-4 border-t border-gray-100 pt-4">
+                 <strong className="text-black text-sm block mb-2">Types of Dashboards:</strong>
+                 <ul className="space-y-1 text-sm text-gray-600 pl-2 border-l-2 border-gray-300">
+                    <li><strong>Operational:</strong> Used for real-time, day-to-day monitoring (e.g., website traffic).</li>
+                    <li><strong>Analytical:</strong> Used to discover deeper patterns and trends (e.g., customer behavior analysis).</li>
+                    <li><strong>Strategic:</strong> Designed exclusively for top management to track long-term, yearly performance and market growth.</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u5m2',
+    title: '2. Normalization & Schemas',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Normalization vs. Denormalization</h2>
+          <p className="mb-6">You will learn the strict rules of database structuring.</p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+             <div className="bg-gray-50 border border-gray-200 p-6 rounded-2xl">
+                <h3 className="text-xl font-bold text-black mb-3">Normalization (The Strict Architect)</h3>
+                <p className="text-sm text-gray-600 mb-3">Normalization is the rigorous mathematical process of organizing your data into multiple related tables. It is the absolute standard for traditional relational databases, like Microsoft SQL Server.</p>
+                <ul className="space-y-2 text-sm text-gray-600 list-disc pl-4">
+                  <li><strong className="text-black">The Core Goal:</strong> Completely eliminate duplicate data, reduce redundancy, and improve data integrity.</li>
+                  <li><strong className="text-black">How it Works:</strong> Instead of repeating a customer's name and city on every order row, normalization forces us to break this down into a dedicated Customer Table, a Product Table, and an Order Table that simply links the records together.</li>
+                  <li><strong className="text-black">The Limitation in Power BI:</strong> While perfect for storage, applying strict normalization in a BI tool can backfire. Too many normalized tables force the engine to execute complex joins across multiple tables, making reporting incredibly slow.</li>
+                </ul>
+             </div>
+             
+             <div className="bg-gray-50 border border-gray-200 p-6 rounded-2xl">
+                <h3 className="text-xl font-bold text-black mb-3">Denormalization (The Performance Hacker)</h3>
+                <p className="text-sm text-gray-600 mb-3">If normalization is about perfect storage, denormalization is about raw speed. It is the exact reverse process, where we intentionally convert a beautifully normalized schema back into a schema that contains redundant, duplicated information.</p>
+                <ul className="space-y-2 text-sm text-gray-600 list-disc pl-4">
+                  <li><strong className="text-black">How it Works:</strong> We intentionally merge the Customer, Product, and Order tables back into one large, combined table.</li>
+                  <li><strong className="text-black">The Purpose:</strong> You implement denormalization to avoid expensive, processor-heavy queries between related tables. By reducing complex joins, you drastically improve query speed.</li>
+                  <li><strong className="text-black">The Benefits for Dashboards:</strong> Loading one large, denormalized table is often far more efficient for dashboard performance. Filter propagation becomes simpler, and establishing hierarchies is significantly easier.</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Modeling Schemas</h2>
+          <p className="mb-4 text-sm">We will compare day-to-day operational databases against analytical data warehouses. You will master three specific schemas:</p>
+          
+          <div className="mb-6 p-4 border border-gray-200 rounded-xl bg-white shadow-sm flex flex-col md:flex-row gap-6">
+             <div className="flex-1">
+                <strong className="text-black text-lg">Transactional Modeling (OLTP)</strong>
+                <p className="text-sm text-gray-600 mt-1">Online Transaction Processing systems are designed strictly to record day-to-day business operations efficiently (e.g., ATM withdrawals). To maintain perfect data integrity, OLTP uses highly normalized structures. However, it is significantly slower for analytics due to complex joins.</p>
+             </div>
+             <div className="hidden md:block w-px bg-gray-200"></div>
+             <div className="flex-1">
+                <strong className="text-black text-lg">Analytical Modeling (OLAP)</strong>
+                <p className="text-sm text-gray-600 mt-1">Online Analytical Processing is built specifically for Business Intelligence and historical data analysis. Here, we intentionally use denormalized structures with fewer tables and simpler joins to guarantee lightning-fast query speeds.</p>
+             </div>
+          </div>
+
+          <div className="space-y-4">
+             <div className="border-l-4 border-gray-400 pl-4 py-2">
+                <h4 className="font-bold text-black text-lg">1. The Flat Schema (The Simplest Structure)</h4>
+                <p className="text-sm text-gray-600 mt-1">A highly redundant structure where absolutely all information is dumped into one single, massive table. There are strictly no relationships or joins to compute.</p>
+                <p className="text-sm text-gray-500 italic mt-1">The Fatal Flaw: Causes severe high data redundancy and demands massive storage space.</p>
+             </div>
+             <div className="border-l-4 border-blue-600 pl-4 py-2 bg-blue-50/50 rounded-r-xl">
+                <h4 className="font-bold text-black text-lg">2. The Star Schema (The BI Gold Standard)</h4>
+                <p className="text-sm text-gray-600 mt-1">The absolute best practice for BI. It organizes your data into two strict categories. At the center lies your <strong>Fact Table</strong> (numerical data & foreign keys), directly surrounded by multiple <strong>Dimension Tables</strong> (descriptive attributes). Visually, it looks like a star.</p>
+                <p className="text-sm text-gray-800 font-medium mt-1">Advantage: Perfectly optimized for fast data analysis and efficient aggregations.</p>
+             </div>
+             <div className="border-l-4 border-gray-400 pl-4 py-2">
+                <h4 className="font-bold text-black text-lg">3. The Snowflake Schema (The Normalized Star)</h4>
+                <p className="text-sm text-gray-600 mt-1">A highly normalized version of the Star Schema where the dimension tables are split further into hierarchies (e.g., splitting 'Product' into separate 'Product', 'Subcategory', and 'Category' tables). Resembles a snowflake.</p>
+                <p className="text-sm text-gray-500 italic mt-1">Trade-Offs: Improves data integrity and storage efficiency, but query speeds will be slightly slower compared to a Star Schema due to more complex joins.</p>
+             </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u5m3',
+    title: '3. Cardinality & Cross Filter Direction',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Cardinality and Cross Filter Direction</h2>
+          <p className="mb-4">You must learn how to connect tables flawlessly so data flows correctly. These two concepts determine exactly how tables are connected and how your data flows between them during analysis.</p>
+        </div>
+
+        <div className="pt-4 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">1. Cardinality (The Numerical Relationship)</h3>
+          <p className="text-sm text-gray-600 mb-4">Cardinality strictly defines the type of relationship between two tables based on the number of matching rows. If you configure this incorrectly, it will lead to inaccurate data analysis.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+             <div className="bg-white border border-gray-200 p-5 rounded-xl shadow-sm text-center">
+                <div className="text-3xl font-bold text-black mb-2 border-b border-gray-100 pb-2">1 : 1</div>
+                <strong className="text-black block mb-2">One-to-One</strong>
+                <p className="text-xs text-gray-600">Each row in one table corresponds to exactly one single row in the related table. (e.g., Employee ID matches exactly one row in a Salary table).</p>
+             </div>
+             <div className="bg-blue-600 border border-blue-700 p-5 rounded-xl shadow-md text-center text-white transform hover:scale-105 transition-transform">
+                <div className="text-3xl font-bold mb-2 border-b border-blue-500 pb-2">1 : *</div>
+                <strong className="block mb-2">One-to-Many</strong>
+                <p className="text-xs text-blue-100">The absolute standard, most common, and default relationship in Power BI. One record in a Dimension table matches multiple records in a Fact table.</p>
+             </div>
+             <div className="bg-white border border-red-200 p-5 rounded-xl shadow-sm text-center">
+                <div className="text-3xl font-bold text-red-600 mb-2 border-b border-red-100 pb-2">* : *</div>
+                <strong className="text-red-600 block mb-2">Many-to-Many</strong>
+                <p className="text-xs text-gray-600">Occurs when multiple values in a column are associated with multiple values in a related table. It introduces severe ambiguity. Use only in highly specific, advanced scenarios.</p>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. Cross Filter Direction (The Flow of Filtering)</h3>
+          <p className="text-sm text-gray-600 mb-4">While cardinality defines <em>how many</em> records match, Cross Filter Direction dictates the exact pathway that filters propagate between your tables when a user interacts with a dashboard.</p>
+          
+          <div className="space-y-4">
+             <div className="flex flex-col md:flex-row gap-4 items-center bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center border border-gray-300 shadow-sm flex-shrink-0">
+                   <ArrowRight size={24} className="text-black" />
+                </div>
+                <div>
+                   <strong className="text-black text-lg block mb-1">Single Direction (The Default)</strong>
+                   <p className="text-sm text-gray-600">In this setting, the filter strictly flows from the Dimension table down to the Fact table. The filter successfully propagates from one table to another, but it <em>never</em> flows backward.</p>
+                </div>
+             </div>
+             <div className="flex flex-col md:flex-row gap-4 items-center bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center border border-gray-300 shadow-sm flex-shrink-0 space-x-[-10px]">
+                   <ArrowRight size={20} className="text-black transform rotate-180" />
+                   <ArrowRight size={20} className="text-black" />
+                </div>
+                <div>
+                   <strong className="text-black text-lg block mb-1">Both Directions (Bi-directional)</strong>
+                   <p className="text-sm text-gray-600">Here, filters propagate in both directions between the tables. While mathematically useful for complex models, it forces the analytical engine to work much harder and can severely reduce your dashboard's performance.</p>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <div className="bg-black text-white p-6 md:p-8 rounded-3xl shadow-xl">
+             <h3 className="text-2xl font-bold mb-4">3. The Architect's Best Practices</h3>
+             <p className="text-sm text-gray-300 mb-6">To guarantee your model does not crash and your query speeds remain lightning-fast, you must follow these strict rules:</p>
+             <ul className="space-y-3 text-sm text-gray-200">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-white mt-0.5 flex-shrink-0" />
+                  <span><strong>Identify Unique Keys:</strong> Always ensure that the "one" side in your relationship contains strictly unique values.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-white mt-0.5 flex-shrink-0" />
+                  <span><strong>Limit Complex Directions:</strong> Limit the use of "Both-Direction" filtering, as it creates massive performance issues in large datasets.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-white mt-0.5 flex-shrink-0" />
+                  <span><strong>Avoid Many-to-Many:</strong> Avoid it whenever possible to prevent ambiguous calculations.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-white mt-0.5 flex-shrink-0" />
+                  <span><strong>Understand Granularity:</strong> You must deeply understand your dataset's <em>granularity</em> (its specific level of detail). Misjudging your data's granularity will directly cause you to establish incorrect cardinality and cross-filter directions, leading to completely misrepresented business insights.</span>
+                </li>
+             </ul>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u5m4',
+    title: '4. DAX & Statistical Functions',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Data Analysis Expressions (DAX)</h2>
+          <p className="mb-4 text-sm">This is where you code! DAX is the powerful formula language used for advanced calculations. It is a vast library of functions, operators, and constants used to perform highly advanced custom calculations on your tabular data models.</p>
+          <p className="mb-6 font-bold text-black">Let us rigorously dissect the three core ways you will use DAX to architect your models:</p>
+        </div>
+
+        <div className="space-y-6">
+           <div className="border border-gray-200 p-6 rounded-2xl bg-white shadow-sm">
+              <h3 className="text-xl font-bold text-black mb-3">1. Calculated Columns (The Row-by-Row Approach)</h3>
+              <p className="text-sm text-gray-600 mb-3">A Calculated Column is a brand-new column created directly inside an existing table using a DAX formula.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600 mb-4">
+                <li><strong className="text-black">The Context (Row Context):</strong> The analytical engine evaluates the formula strictly row-by-row.</li>
+                <li><strong className="text-black">Storage Impact:</strong> The results are physically stored inside your data model, which ultimately increases your overall file size.</li>
+                <li><strong className="text-black">Best Use Case:</strong> You architect these when you need to create new derived attributes to slice or group your data.</li>
+              </ul>
+              <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg font-mono text-sm text-blue-700">
+                TotalPrice = Sales[Quantity] * Sales[Unit Price]
+              </div>
+           </div>
+
+           <div className="border border-gray-200 p-6 rounded-2xl bg-white shadow-sm">
+              <h3 className="text-xl font-bold text-black mb-3">2. Calculated Tables (The Intermediate Structures)</h3>
+              <p className="text-sm text-gray-600 mb-3">A Calculated Table is an entirely new table generated in your model using a DAX expression during the data model refresh process.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600 mb-4">
+                <li><strong className="text-black">Storage Impact:</strong> Just like calculated columns, these tables are physically stored within the model.</li>
+                <li><strong className="text-black">Best Use Cases:</strong> Absolutely essential for creating filtered datasets, intermediate tables, or specialized structures like a dynamic Date table (using the <code className="font-mono bg-gray-100 px-1 rounded">CALENDAR</code> function) for complex time intelligence analysis.</li>
+              </ul>
+              <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg font-mono text-sm text-blue-700">
+                HighSales = FILTER(Sales, Sales[Sales] &gt; 20000)
+              </div>
+           </div>
+
+           <div className="border-2 border-black p-6 rounded-2xl bg-white shadow-md relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 rounded-bl-lg">GOLDEN RULE</div>
+              <h3 className="text-xl font-bold text-black mb-3">3. Measures (The Dynamic Aggregators)</h3>
+              <p className="text-sm text-gray-600 mb-3">As an elite data architect, Measures are your ultimate weapon. A measure is a dynamic calculation specifically designed to compute aggregated values, such as sums, averages, minimums, or maximums.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600 mb-4">
+                <li><strong className="text-black">The Context (Filter Context):</strong> Unlike calculated columns, measures never evaluate row-by-row. They operate strictly under a <em>Filter Context</em>. The result recalculates in real-time as users interact with the dashboard.</li>
+                <li><strong className="text-black">Storage Impact:</strong> Measures are calculated on the fly and are <em>not</em> stored physically in the model. This makes them highly memory efficient!</li>
+                <li><strong className="text-black">Best Use Case:</strong> The absolute industry standard for building KPIs and complex business metrics.</li>
+              </ul>
+              <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg font-mono text-sm text-blue-700 mb-3">
+                Total Sales = SUM(Sales[Amount])
+              </div>
+              <p className="text-sm italic text-gray-700"><strong>Golden Rule:</strong> If you want your dashboard to load in seconds, prioritize using Measures over Calculated Columns whenever possible.</p>
+           </div>
+        </div>
+
+        <div className="pt-10 border-t border-gray-100">
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Basic Statistical Functions in DAX</h2>
+          <p className="mb-6 text-sm">A top-tier analyst proves their findings with statistics. These specific functions allow you to calculate values related to statistical distributions and probabilities.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <strong className="text-black block mb-1">1. SUM</strong>
+                <p className="text-xs text-gray-600 mb-2">Strictly adds all numeric values found within a specified column.</p>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded block text-blue-700">Total Sales = SUM(Sales[Amount])</code>
+             </div>
+             
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <strong className="text-black block mb-1">2. AVERAGE & AVERAGEX</strong>
+                <p className="text-xs text-gray-600 mb-2"><strong>AVERAGE</strong> calculates arithmetic mean. <strong>AVERAGEX</strong> evaluates a math expression row-by-row <em>before</em> calculating the average.</p>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded block text-blue-700">Avg = AVERAGEX(Sales, Sales[Qty] * Sales[Price])</code>
+             </div>
+
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 md:col-span-2">
+                <strong className="text-black block mb-1">3. COUNT, COUNTA, and COUNTBLANK</strong>
+                <ul className="text-xs text-gray-600 space-y-1 mb-2 list-disc pl-4">
+                   <li><strong>COUNT:</strong> Counts rows in a column (returns blank if no match).</li>
+                   <li><strong>COUNTA:</strong> Used for non-numeric values (text/dates); counts all non-empty cells.</li>
+                   <li><strong>COUNTBLANK:</strong> Counts exact number of blank or missing cells (excellent for data cleaning).</li>
+                </ul>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded inline-block text-blue-700">Number of Customers = COUNT([CustomerID])</code>
+             </div>
+
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <strong className="text-black block mb-1">4. MAX and MIN</strong>
+                <p className="text-xs text-gray-600 mb-2">Identify the absolute largest (MAX) and absolute smallest (MIN) values in a column.</p>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded block text-blue-700">Max Sales = MAX(Sales[Amount])</code>
+             </div>
+
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <strong className="text-black block mb-1">5. DISTINCTCOUNT</strong>
+                <p className="text-xs text-gray-600 mb-2">Only counts distinct, non-repeated values. Crucial for understanding actual unique customer base.</p>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded block text-blue-700">Distinct Cust = DISTINCTCOUNT([CustomerID])</code>
+             </div>
+
+             <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 md:col-span-2">
+                <strong className="text-black block mb-1">6. MEDIAN (The Outlier-Proof Metric)</strong>
+                <p className="text-xs text-gray-600 mb-2">Calculates the exact middle value. Unlike AVERAGE, MEDIAN is less affected by extreme outliers or highly skewed distributions. Strictly supports numeric data.</p>
+                <code className="text-xs font-mono bg-white px-2 py-1 border border-gray-200 rounded inline-block text-blue-700">Median Customer Age = MEDIAN(Customers[Age])</code>
+             </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u5m5',
+    title: '5. Optimizing Performance',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Optimizing DAX Queries & Dashboard Performance</h2>
+          <p className="mb-4">Finally, you must architect systems that do not crash. We will cover advanced techniques to ensure your dashboards load in seconds. Let us rigorously dissect these advanced optimization techniques point by point:</p>
+        </div>
+
+        <div className="space-y-6">
+           <div className="border-l-4 border-black pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">1. DAX Optimization: Measures over Calculated Columns</h3>
+              <p className="text-sm text-gray-600 mb-2"><strong>The Memory Trap:</strong> Calculated columns physically store their results inside your data model for every single row, which massively inflates your file size and eats up valuable RAM.</p>
+              <p className="text-sm text-gray-600"><strong>The Architect's Solution:</strong> Always use <strong>Measures</strong>. Measures compute values <em>only</em> when actively needed and are never permanently stored.</p>
+           </div>
+
+           <div className="border-l-4 border-gray-400 pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">2. DAX Optimization: Reducing Cardinality</h3>
+              <p className="text-sm text-gray-600 mb-2"><strong>The Danger:</strong> "Cardinality" refers to the number of <em>unique values</em> in a column. Columns with highly unique values (like exact 'Transaction IDs' or timestamps) are hard for the engine to compress, severely slowing query processing.</p>
+              <p className="text-sm text-gray-600"><strong>The Architect's Solution:</strong> If a high-cardinality column is not absolutely critical for your visual dashboard, delete it entirely. Stick to lower cardinality columns.</p>
+           </div>
+
+           <div className="border-l-4 border-blue-600 pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">3. DAX Optimization: Utilizing Variables (VAR)</h3>
+              <p className="text-sm text-gray-600 mb-3">If your DAX formula calculates the exact same mathematical expression twice, your code is inefficient. Using the <code className="font-mono px-1">VAR</code> function allows you to store the result of an expression as a named variable. The engine computes this variable strictly once, and then reuses that result.</p>
+              
+              <div className="bg-[#0d1117] text-gray-300 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-sm">
+<pre>{`// UNOPTIMIZED (Calculates SUM(Sales[Cost]) twice!)
+(SUM(Sales[Amount]) - SUM(Sales[Cost])) / SUM(Sales[Cost])
+
+// OPTIMIZED USING VAR
+SalesGrowth =
+VAR TotalSales = SUM(Sales[Amount])
+VAR TotalCost = SUM(Sales[Cost])
+RETURN
+(TotalSales - TotalCost) / TotalCost`}</pre>
+              </div>
+              <p className="text-sm text-gray-600 mt-2 italic">This guarantees faster execution, dramatically cleaner code, and reduced computational cost.</p>
+           </div>
+
+           <div className="border-l-4 border-gray-400 pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">4. Dashboard Optimization: Limiting Visuals</h3>
+              <p className="text-sm text-gray-600 mb-2"><strong>The Bottleneck:</strong> Every single visual, slicer, and card triggers its own separate DAX query against the database. 30 charts on one page = lag and potential crash.</p>
+              <p className="text-sm text-gray-600"><strong>The Strict Rule:</strong> You must limit your designs to strictly <strong>6 to 8 visuals per page</strong>. Combine related visuals into a single combo chart, utilize multiple report pages, and avoid heavy custom Maps unless absolutely necessary.</p>
+           </div>
+
+           <div className="border-l-4 border-gray-400 pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">5. Dashboard Optimization: Aggregated Tables</h3>
+              <p className="text-sm text-gray-600 mb-2"><strong>The Concept:</strong> Querying a raw transaction table containing 10 million rows every time an executive clicks a filter will destroy your performance.</p>
+              <p className="text-sm text-gray-600"><strong>The Solution:</strong> You should architect pre-computed <strong>Aggregated Tables</strong>. Build a smaller summary table that groups the data (e.g., Total Sales rolled up by Month and Region). This massively reduces query complexity.</p>
+           </div>
+
+           <div className="border-l-4 border-gray-400 pl-5 py-2">
+              <h3 className="text-xl font-bold text-black mb-2">6. Dashboard Optimization: Applying Filters at the Source</h3>
+              <p className="text-sm text-gray-600 mb-2"><strong>The Ultimate Rule:</strong> Never load data into your model that you do not intend to analyze.</p>
+              <p className="text-sm text-gray-600"><strong>The Solution:</strong> You must filter your data at the <strong>source level</strong>—either via SQL queries or in the Power Query ETL stage <em>before</em> it reaches the Power BI engine. (e.g., filter out 10-year-old data if you only need the last 2 years).</p>
+           </div>
+        </div>
+
+        <div className="bg-black text-white p-6 rounded-2xl shadow-xl mt-8 text-center">
+           <h4 className="font-bold text-lg mb-2">Final Diagnostic Word</h4>
+           <p className="text-sm text-gray-300">If you ever encounter a slow dashboard in the real world, you can use Power BI's built-in <strong>Performance Analyzer</strong> tool. It acts as an X-ray, recording the exact execution time of every single visual and DAX query so you can hunt down exactly which chart is crashing your system.</p>
+        </div>
+      </div>
+    )
+  }
+];
+
 function DashboardScreen({ subject, onBack }) {
   // State to track which module is selected in the sidebar
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
 
-  const activeData = subject?.includes('Unit 4') 
-    ? unit4Modules
-    : subject?.includes('Unit 3') 
-      ? unit3Modules 
-      : subject?.includes('Unit 2') 
-        ? unit2Modules 
-        : dmvModules;
+  const activeData = subject?.includes('Unit 5')
+    ? unit5Modules
+    : subject?.includes('Unit 4') 
+      ? unit4Modules
+      : subject?.includes('Unit 3') 
+        ? unit3Modules 
+        : subject?.includes('Unit 2') 
+          ? unit2Modules 
+          : dmvModules;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
