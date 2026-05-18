@@ -106,7 +106,8 @@ function IntroScreen({ onNext }) {
 
 function SubjectSelectionScreen({ onBack, onSelect }) {
   const subjects = [
-    { id: 1, title: 'Data Modeling and Visualization', category: 'Subject' },
+    { id: 1, title: 'Unit 1: Data Modeling and Visualization', category: 'Chapter 1' },
+    { id: 2, title: 'Unit 2: EDA and Visualization Using R', category: 'Chapter 2' },
   ];
 
   return (
