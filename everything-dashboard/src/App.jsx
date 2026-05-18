@@ -108,6 +108,7 @@ function SubjectSelectionScreen({ onBack, onSelect }) {
   const subjects = [
     { id: 1, title: 'Unit 1: Data Modeling and Visualization', category: 'Chapter 1' },
     { id: 2, title: 'Unit 2: EDA and Visualization Using R', category: 'Chapter 2' },
+    { id: 3, title: 'Unit 3: Regression, Classification & Clustering', category: 'Chapter 3' },
   ];
 
   return (
@@ -1282,11 +1283,614 @@ boxplot(mpg ~ cyl, data = mtcars,             # Formula syntax: plot 'mpg' group
   }
 ];
 
+// --- DATA CONTENT FROM DMV UNIT 3 ---
+const unit3Modules = [
+  {
+    id: 'u3m1',
+    title: '1. Supervised vs. Unsupervised Models',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Supervised VS Unsupervised Learning</h2>
+          <p className="mb-4">This is where your data science skills truly evolve into machine learning! Before coding, we must understand the core architecture of machine learning.</p>
+          <p className="mb-6 font-bold text-black">If you fundamentally misunderstand which architecture to apply to your data, your entire model will fail. Let us dissect these two paradigms point by point so you can architect flawless systems.</p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm mb-8">
+             <div className="bg-black text-white p-6">
+                <h3 className="text-2xl font-bold">1. Supervised Learning (The Guided Approach)</h3>
+                <p className="text-gray-300 mt-2">In this architecture, you act as the "supervisor" to the algorithm. You train the model using <strong>labeled data</strong>, meaning your dataset consists of both the input features and the exact, accurate output (the answer key).</p>
+             </div>
+             <div className="p-6 space-y-6 bg-white">
+                <div>
+                   <h4 className="font-bold text-lg text-black mb-2">The Core Process</h4>
+                   <p className="text-sm text-gray-600">The algorithm learns the mathematical mapping from the input to the output, actively adjusting itself to minimize prediction errors. For example, if you feed the model pictures of apples (the input data) alongside explicit annotations stating "These are apples" (the labels), the model learns the exact patterns required to predict "It's an apple!" when shown new data.</p>
+                </div>
+                <div>
+                   <h4 className="font-bold text-lg text-black mb-2">The Primary Goal</h4>
+                   <p className="text-sm text-gray-600">To predict known outcomes or explicitly classify new, unseen data points based on historical examples.</p>
+                </div>
+                <div className="border-t border-gray-100 pt-4">
+                   <h4 className="font-bold text-lg text-black mb-3">The Two Major Tasks</h4>
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <strong className="text-black block mb-1">Regression:</strong>
+                        <p className="text-sm text-gray-600 mb-2">Used when the output you want to predict is <em>continuous</em> (numerical data).</p>
+                        <p className="text-sm text-gray-500 italic">Example: Predicting exact house prices based on features like square footage and location.</p>
+                     </div>
+                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <strong className="text-black block mb-1">Classification:</strong>
+                        <p className="text-sm text-gray-600 mb-2">Used when the output you want to predict is <em>discrete</em> (categorical data).</p>
+                        <p className="text-sm text-gray-500 italic">Example: Identifying whether an incoming email should be marked as "spam" or "not spam".</p>
+                     </div>
+                   </div>
+                </div>
+                <div className="pt-2">
+                   <strong className="text-black text-sm">Key Algorithms:</strong> <span className="text-sm text-gray-600">Linear Regression, Logistic Regression, K-Nearest Neighbors (KNN), Decision Trees, Support Vector Machines (SVM), and Neural Networks.</span>
+                </div>
+             </div>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm">
+             <div className="bg-gray-900 text-white p-6">
+                <h3 className="text-2xl font-bold">2. Unsupervised Learning (The Discovery Approach)</h3>
+                <p className="text-gray-300 mt-2">In this architecture, the algorithm is entirely on its own. You feed the model strictly <strong>unlabeled data</strong>, meaning it consists only of raw input features without any predefined answers or target outputs.</p>
+             </div>
+             <div className="p-6 space-y-6 bg-white">
+                <div>
+                   <h4 className="font-bold text-lg text-black mb-2">The Core Process</h4>
+                   <p className="text-sm text-gray-600">Because there are no labels to map to, the model must autonomously find inherent groupings or structures within the data. For example, if you feed the model a mixed dataset containing images of apples, bananas, and peaches without any labels, the model will automatically group them into three distinct clusters based purely on their structural similarities (like color and shape).</p>
+                </div>
+                <div>
+                   <h4 className="font-bold text-lg text-black mb-2">The Primary Goal</h4>
+                   <p className="text-sm text-gray-600">To discover hidden patterns, underlying structures, or unknown relationships within raw data.</p>
+                </div>
+                <div className="border-t border-gray-100 pt-4">
+                   <h4 className="font-bold text-lg text-black mb-3">The Three Major Tasks</h4>
+                   <div className="space-y-4">
+                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <strong className="text-black block mb-1">Clustering:</strong>
+                        <p className="text-sm text-gray-600 mb-2">Automatically grouping unlabelled data points into clusters based on their similarity.</p>
+                        <p className="text-sm text-gray-500 italic">Example: Grouping a massive database of customers into distinct segments for targeted marketing.</p>
+                     </div>
+                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <strong className="text-black block mb-1">Association:</strong>
+                        <p className="text-sm text-gray-600 mb-2">Discovering rules that describe relationships between variables in large databases.</p>
+                        <p className="text-sm text-gray-500 italic">Example: Market basket analysis (e.g., discovering that customers who buy bread also frequently buy butter).</p>
+                     </div>
+                     <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <strong className="text-black block mb-1">Dimensionality Reduction:</strong>
+                        <p className="text-sm text-gray-600">Simplifying the dataset by reducing the number of random variables under consideration.</p>
+                     </div>
+                   </div>
+                </div>
+                <div className="pt-2">
+                   <strong className="text-black text-sm">Key Algorithms:</strong> <span className="text-sm text-gray-600">K-Means Clustering, DBSCAN, and Autoencoders.</span>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        <div className="bg-gray-100 border border-gray-200 p-6 rounded-2xl shadow-sm mt-8">
+           <h4 className="font-bold text-xl text-black mb-2">The Architect's Summary:</h4>
+           <p className="text-gray-700">If you have a specific target variable you want to predict (like "Sales" or "Disease Yes/No"), you must build a <strong>Supervised</strong> model. If you simply have a massive ocean of data and want to know "What natural patterns exist in here?", you deploy an <strong>Unsupervised</strong> model.</p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u3m2',
+    title: '2. Regression Models (Linear & Logistic)',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Regression Models</h2>
+          <p className="mb-4">We will learn how to quantify relationships between variables and predict future outcomes. Let us break down Linear and Logistic Regression point by point so you can architect these models flawlessly.</p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">1. Linear Regression (Predicting Continuous Outcomes)</h3>
+          <p className="mb-6">Linear regression is a powerful statistical method used when your dependent variable (the outcome you want to predict) is continuous, such as forecasting exact house prices or a student's exam score based on study hours.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+               <h4 className="font-bold text-lg text-black mb-2">The Mathematical Architecture</h4>
+               <p className="text-sm mb-3">The goal is to fit a mathematical equation (a straight line) to your data. For a simple linear regression with one independent variable, the equation is:</p>
+               <div className="bg-white border border-gray-200 p-3 rounded-lg text-center font-mono font-bold text-black mb-3 text-lg">
+                 ŷ = b · x + a
+               </div>
+               <p className="text-sm text-gray-600">where <strong>'b'</strong> is the slope of the line and <strong>'a'</strong> is the y-intercept.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+               <h4 className="font-bold text-lg text-black mb-2">The Line of Best Fit</h4>
+               <p className="text-sm text-gray-600">You do not just draw a line arbitrarily. We calculate this straight line using the <strong>method of least squares</strong>. This mathematical technique strictly minimizes the sum of the squares of the vertical distances between your actual observed data points and the line.</p>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="border border-gray-200 p-5 rounded-xl">
+               <h4 className="font-bold text-lg text-black mb-2">2. Visualizations for Linear Regression</h4>
+               <p className="text-sm text-gray-600 mb-2">A top-tier data scientist must prove their mathematical models visually.</p>
+               <p className="text-sm text-gray-600"><strong className="text-black">Scatter Plots with Regression Lines:</strong> To visualize the linear relationship, we plot the independent variable on the X-axis and the dependent variable on the Y-axis to create a scatter plot. Then, we overlay our calculated regression line directly over the points. The closer your data points lie to this straight red line, the stronger the linear relationship.</p>
+            </div>
+
+            <div className="border border-gray-200 p-5 rounded-xl">
+               <h4 className="font-bold text-lg text-black mb-2">3. Residual Analysis (Model Interrogation)</h4>
+               <p className="text-sm text-gray-600 mb-3">You must never trust your regression model blindly. You must interrogate it using Residual Analysis.</p>
+               <p className="text-sm text-gray-600 mb-4"><strong className="text-black">What are Residuals?</strong> Residuals are the observable, calculated differences between the actual observed values in your dataset and the estimated values predicted by your regression line.</p>
+               <div className="bg-gray-50 p-4 rounded-lg">
+                 <strong className="text-black block mb-2 text-sm">Residual Plots: Look for specific patterns:</strong>
+                 <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                   <li><strong>The Perfect Scenario (Random Scatter):</strong> If the points are scattered completely randomly around the zero line with no discernible trend, your linear model is appropriate and fits well.</li>
+                   <li><strong>U-Shaped or Curved Pattern:</strong> If the residuals form a curve, it indicates a systematic flaw—specifically, that a linear model is not appropriate because the underlying relationship is non-linear.</li>
+                   <li><strong>Cone-Shaped Pattern (Fanning Out):</strong> If the residuals spread out like a funnel or cone, it indicates <em>heteroscedasticity</em>. This means the variance of your errors is not constant, which violates a core assumption of linear regression.</li>
+                 </ul>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-10 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">4. Logistic Regression (Predicting Categorical Probabilities)</h3>
+          <p className="mb-6">If your goal is to predict a category—such as deciding if a tumor is malignant/not malignant, or if an email is spam/not spam—Linear Regression will fail. You must use <strong>Logistic Regression</strong>.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+               <h4 className="font-bold text-lg text-black mb-2">The Sigmoid Curve</h4>
+               <p className="text-sm text-gray-600">Instead of fitting a straight line, logistic regression uses a sigmoid function (the cumulative distribution function of the logistic distribution). This mathematical transformation bends the line into an "S" shape, ensuring that the output prediction is strictly a probability value confined between 0 and 1.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+               <h4 className="font-bold text-lg text-black mb-2">Classification Threshold</h4>
+               <p className="text-sm text-gray-600">Once the probability is calculated, we apply a threshold (often 0.5) to lock the prediction into a discrete binary category (e.g., if probability &gt; 0.5, predict Class 1).</p>
+            </div>
+          </div>
+
+          <div className="border border-gray-200 p-5 rounded-xl">
+             <h4 className="font-bold text-lg text-black mb-4">5. Evaluation & Visualizations for Classification</h4>
+             <p className="text-sm text-gray-600 mb-4">Evaluating a Logistic Regression model requires entirely different metrics than Linear Regression. We use two ultimate tools:</p>
+             
+             <div className="space-y-6">
+                <div>
+                  <strong className="text-black text-base block mb-2 border-b pb-1">The Confusion Matrix:</strong>
+                  <p className="text-sm text-gray-600 mb-3">A table that rigorously evaluates your predictions by mapping them into four quadrants: True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN). From this matrix, we calculate strict performance metrics:</p>
+                  <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                    <li><strong>Accuracy:</strong> The total percentage of correctly classified test tuples.</li>
+                    <li><strong>Precision:</strong> The ratio of correctly predicted positive observations to the total predicted positive observations <code className="font-mono bg-gray-100 px-1 rounded">TP / (TP + FP)</code>.</li>
+                    <li><strong>Recall (Sensitivity):</strong> The ratio of correctly predicted positive observations to all actual positive observations <code className="font-mono bg-gray-100 px-1 rounded">TP / (TP + FN)</code>.</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <strong className="text-black text-base block mb-2 border-b pb-1">ROC Curves (Receiver Operating Characteristic):</strong>
+                  <p className="text-sm text-gray-600 mb-3">This is a graphical tool used to evaluate how perfectly your model distinguishes between the two classes. It plots the <strong>False Positive Rate (FPR)</strong> on the X-axis against the <strong>True Positive Rate (TPR)</strong> on the Y-axis.</p>
+                  <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                    <li><strong>Visual Interpretation:</strong> The closer your curve hugs the top-left corner of the plot, the better your model is performing. A curve following the diagonal line represents a useless model that is merely guessing randomly.</li>
+                    <li><strong>AUC (Area Under the Curve):</strong> This is the ultimate mathematical summary of the ROC curve. It calculates the exact physical area beneath the curve, resulting in a value between 0 and 1. A score of 1.0 means you have built a perfect classifier, while an AUC between 0.9 and 1.0 is considered "Excellent".</li>
+                  </ul>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u3m3',
+    title: '3. Classification Models (KNN)',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Classification Models (K-Nearest Neighbors - KNN)</h2>
+          <p className="mb-4">We will explore instance-based learning, where a new data point is classified by taking a "majority vote" from its 'K' closest neighbors.</p>
+          <p className="mb-4">Unlike linear regression which builds a mathematical equation, KNN is an "instance-based" or "lazy" learner. It does not learn a strict equation; instead, it learns by pure analogy.</p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">1. The Architecture of K-Nearest Neighbors (KNN)</h3>
+          <p className="mb-4 text-sm">When we feed the algorithm a brand new, unknown data point, it searches the entire training dataset to find the 'K' number of points that are physically closest to it.</p>
+          <div className="bg-gray-50 border border-gray-200 p-6 rounded-2xl shadow-sm mb-6">
+             <strong className="text-black block mb-2">The Majority Vote:</strong>
+             <p className="text-sm text-gray-600">Once it finds these 'K' nearest neighbors, it simply counts their class labels. The new data point is assigned to the class that has the highest frequency (the majority vote) among those neighbors.</p>
+          </div>
+          <div className="bg-black text-white p-4 rounded-xl text-sm italic">
+             <strong>Professor's Warning:</strong> Because KNN relies entirely on distance, you <strong>must</strong> normalize your data (using Min-Max normalization) before running the algorithm. If you do not, variables with large numbers (like Salary) will completely overpower variables with small numbers (like Age).
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. Distance Metrics (The Mathematics of Closeness)</h3>
+          <p className="mb-4 text-sm">How exactly does the algorithm calculate what is "closest"? You must act as the architect and choose the correct distance formula based on your data type. Here are the six metrics you must master:</p>
+          <ul className="space-y-4">
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">1. Euclidean Distance:</strong>
+               <p className="text-sm text-gray-600 mb-2">The absolute standard. It measures the ordinary straight-line distance between two points. It is best for continuous numerical data.</p>
+               <p className="text-sm font-mono bg-gray-50 p-2 rounded text-black text-center">d(x,y) = √[Σ(x_i - y_i)²]</p>
+             </li>
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">2. Manhattan Distance:</strong>
+               <p className="text-sm text-gray-600 mb-2">It calculates the absolute differences of the coordinates, akin to a taxi navigating the grid of city blocks. It is highly effective for high-dimensional data.</p>
+               <p className="text-sm font-mono bg-gray-50 p-2 rounded text-black text-center">d(x,y) = Σ|x_i - y_i|</p>
+             </li>
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">3. Minkowski Distance:</strong>
+               <p className="text-sm text-gray-600">This is the ultimate generalized distance measure. It uses a parameter 'p'. If you set p=1, it becomes the Manhattan distance. If you set p=2, it becomes the Euclidean distance.</p>
+             </li>
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">4. Cosine Similarity / Distance:</strong>
+               <p className="text-sm text-gray-600">Instead of measuring the physical distance, this measures the <em>angle</em> between two vectors. It is perfect for Text Mining and NLP (e.g., comparing two documents regardless of their length).</p>
+             </li>
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">5. Hamming Distance:</strong>
+               <p className="text-sm text-gray-600">Used specifically for binary strings or DNA sequences. It simply counts the number of positions where two strings of equal length differ.</p>
+             </li>
+             <li className="p-4 border border-gray-200 rounded-xl">
+               <strong className="text-black block mb-1">6. Jaccard Index:</strong>
+               <p className="text-sm text-gray-600">A set-based distance that measures the ratio of unique elements to common elements. It is widely used for categorical data or comparing shopping carts.</p>
+             </li>
+          </ul>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">3. Visualizations and Model Tuning</h3>
+          <p className="mb-4 text-sm">A top-tier data scientist does not just guess the value of 'K'. We prove it visually.</p>
+          
+          <div className="space-y-4">
+             <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <strong className="text-black text-lg block mb-2">Decision Boundaries:</strong>
+                <p className="text-sm text-gray-600 mb-2">This is a visualized line or surface that divides different classification groups in your feature space.</p>
+                <p className="text-sm text-gray-600"><strong>Impact of K:</strong> If you choose a very <em>small K</em> (like K=1), the boundary becomes highly complex and jagged, closely wrapping around every single data point. This causes severe <em>overfitting</em>. If you choose a very <em>large K</em>, the boundary smooths out completely, which can lead to <em>underfitting</em>.</p>
+             </div>
+             <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <strong className="text-black text-lg block mb-2">Error Rate vs. Accuracy Plots:</strong>
+                <p className="text-sm text-gray-600 mb-2">To perfectly tune the 'K' hyperparameter, we plot the Error Rate (or Accuracy, which is <code className="font-mono bg-white px-1 rounded">1 - Error Rate</code>) across a range of K values (e.g., from 1 to 40).</p>
+                <p className="text-sm text-gray-600"><strong>The Elbow Point:</strong> As K increases from 1, the error rate initially drops. You must look for the "elbow point" on the graph where the error rate hits its absolute lowest value before it begins to stabilize or rise again. That exact point is your mathematically optimal K value.</p>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">4. R Programming Implementation</h3>
+          <p className="mb-4 text-sm">Here is the exact, professional R code to execute KNN, evaluate it using a Confusion Matrix, and plot the Accuracy curve to find your optimal 'K'.</p>
+          
+          <div className="bg-[#0d1117] text-gray-300 font-mono text-sm overflow-x-auto rounded-2xl shadow-xl">
+<pre className="p-6">{`# 1. Load the necessary libraries 
+library(e1071) 
+library(caTools) 
+library(class)     # The primary library for the knn() function 
+library(ggplot2) 
+
+
+# 2. Load and split the dataset 
+data(iris) 
+set.seed(123) # Ensure reproducibility 
+split <- sample.split(iris$Species, SplitRatio = 0.7) 
+train_data <- subset(iris, split == TRUE) 
+test_data <- subset(iris, split == FALSE) 
+
+
+# 3. Train the KNN model (Testing with K = 3) 
+k <- 3  
+# Notice we remove the 5th column (the target labels) from train and test sets 
+knn_model <- knn(train = train_data[, -5], 
+                 test = test_data[, -5], 
+                 cl = train_data$Species, 
+                 k = k) 
+
+
+
+# 4. Evaluate the model 
+conf_matrix <- table(knn_model, test_data$Species) 
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix) 
+
+print(conf_matrix) 
+cat("\\nAccuracy:", accuracy, "\\n") 
+
+# 5. Hyperparameter Tuning: Loop through K values 1 to 20 
+k_values <- 1:20 
+accuracy_values <- numeric(length(k_values)) 
+
+for (i in 1:length(k_values)) { 
+  knn_model_loop <- knn(train = train_data[, -5], 
+                        test = test_data[, -5], 
+                        cl = train_data$Species, 
+                        k = k_values[i]) 
+
+  c_matrix <- table(knn_model_loop, test_data$Species) 
+  accuracy_values[i] <- sum(diag(c_matrix)) / sum(c_matrix) 
+} 
+
+
+
+
+# 6. Visualize Accuracy vs. K to find the optimal 'K' 
+accuracy_df <- data.frame(K = k_values, Accuracy = accuracy_values) 
+
+ggplot(accuracy_df, aes(x = K, y = Accuracy)) + 
+  geom_line(color = "blue") + 
+  geom_point(color = "blue") + 
+  labs(title = "Accuracy vs. Number of Neighbors (K)", 
+       x = "Number of Neighbors (K)", 
+       y = "Accuracy") + 
+  theme_minimal() `}</pre>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u3m4',
+    title: '4. Clustering Models (K-Means)',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Clustering Models (K-Means Clustering)</h2>
+          <p className="mb-4">Moving to unsupervised learning, we will logically group similar unlabelled data points. Let us dissect the mathematics, the initialization strategies, the visual proofs, and the exact R code you need to build this flawlessly.</p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">1. The Architecture of the K-Means Algorithm</h3>
+          <p className="mb-4 text-sm">K-Means is a centroid-based partitioning technique. Its primary mathematical objective is to achieve high <em>intracluster similarity</em> (points in the same group are very close to each other) and low <em>intercluster similarity</em> (different groups are far apart).</p>
+          
+          <div className="space-y-4">
+             <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
+                <strong className="text-black text-lg block mb-1">The Centroid:</strong>
+                <p className="text-sm text-gray-600">Each cluster is represented by a "centroid," which is the exact center point or mean value of all the objects assigned to that cluster.</p>
+             </div>
+             <div className="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-3">The Iterative Process:</strong>
+                <p className="text-sm text-gray-600 mb-2">The algorithm works in a strict loop:</p>
+                <ul className="list-decimal pl-5 text-sm space-y-2 text-gray-700">
+                  <li>It arbitrarily chooses 'K' objects from the dataset to act as the initial cluster centers.</li>
+                  <li>It calculates the Euclidean distance between every data point and these centers, assigning each point to the centroid it is most similar to (closest to).</li>
+                  <li>Once all points are assigned, it recalculates and updates the cluster means (the new centroids).</li>
+                  <li>It repeats this reassignment and updating process until the centroids stop moving (no change).</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. Centroid Initialization (The Critical First Step)</h3>
+          <p className="mb-4 text-sm">Where you place your very first, initial centroids drastically alters your final results. If you initialize them poorly, the algorithm may converge to a "local optimum," resulting in completely incorrect clustering. Here are the architectural methods you must know:</p>
+          <ul className="space-y-3">
+             <li className="flex items-start gap-3">
+               <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></div>
+               <div>
+                 <strong className="text-black">1. Random Initialization:</strong> <span className="text-sm text-gray-600">Selecting 'K' random data points. It is simple and fast, but highly risky because results will vary every single time you run the code, potentially leading to poor clustering.</span>
+               </div>
+             </li>
+             <li className="flex items-start gap-3">
+               <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
+               <div>
+                 <strong className="text-black">2. K-Means++ (Best Practice):</strong> <span className="text-sm text-gray-600">This is the industry standard. You select the first centroid completely randomly, but the remaining centroids are chosen based on the maximum distance from the already existing centroids. This drastically improves clustering accuracy and convergence speed.</span>
+               </div>
+             </li>
+             <li className="flex items-start gap-3">
+               <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></div>
+               <div>
+                 <strong className="text-black">3. Forgy Method:</strong> <span className="text-sm text-gray-600">Randomly selecting 'K' actual observations from the dataset to serve as the initial centroids (very similar to random initialization).</span>
+               </div>
+             </li>
+             <li className="flex items-start gap-3">
+               <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></div>
+               <div>
+                 <strong className="text-black">4. Random Partition:</strong> <span className="text-sm text-gray-600">Assigning every data point randomly to a cluster first, and then computing the centroids based on those random groups. It is often mathematically unstable.</span>
+               </div>
+             </li>
+             <li className="flex items-start gap-3">
+               <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0"></div>
+               <div>
+                 <strong className="text-black">5. Manual Initialization:</strong> <span className="text-sm text-gray-600">As an architect, if you already have prior domain knowledge about the data, you manually dictate exactly where the initial centroids should be.</span>
+               </div>
+             </li>
+          </ul>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">3. Visualizations for Clustering</h3>
+          <p className="mb-4 text-sm">In unsupervised learning, visual proof is everything. We rely on three primary visual techniques:</p>
+          
+          <div className="grid grid-cols-1 gap-6">
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-2 border-b pb-1">Multi-Colored Scatter Plots:</strong>
+                <p className="text-sm text-gray-600">Once the algorithm assigns the clusters, we plot our data points on a 2D grid and color-code them based on their assigned cluster. We also overlay a distinct marker (like a black 'X') to clearly show the final centroid positions.</p>
+             </div>
+             
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-2 border-b pb-1">The Elbow Method (Finding 'K'):</strong>
+                <p className="text-sm text-gray-600 mb-2">How do you know if you should create 3 clusters or 10? You must calculate the <strong>Within-Cluster Sum of Squares (WCSS)</strong>, which measures how close data points are to their centroids. WCSS always decreases as 'K' increases.</p>
+                <p className="text-sm text-gray-600">You plot 'K' (x-axis) against WCSS (y-axis). The exact point on the curve where the improvement drops off sharply and becomes marginal is called the "elbow." That point mathematically dictates your optimal number of clusters.</p>
+             </div>
+             
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-2 border-b pb-1">Silhouette Plots (Evaluating Quality):</strong>
+                <p className="text-sm text-gray-600 mb-2">This measures exactly how well each data point fits within its assigned cluster compared to other clusters. The Silhouette Score ranges from <strong>-1 to +1</strong>.</p>
+                <ul className="list-disc pl-5 text-sm space-y-1 text-gray-600 mt-2">
+                   <li><strong>+1</strong> means the point is perfectly clustered.</li>
+                   <li><strong>0</strong> means the point is dangerously close to the boundary of another cluster.</li>
+                   <li><strong>-1</strong> means the point has been misclassified into the wrong cluster entirely.</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">4. R Programming Implementation</h3>
+          <p className="mb-4 text-sm">Here is the exact, professional R code to execute the K-Means algorithm, visualize the clusters, find the elbow, and plot the silhouette scores using the <code>iris</code> dataset.</p>
+          
+          <div className="bg-[#0d1117] text-gray-300 font-mono text-sm overflow-x-auto rounded-2xl shadow-xl">
+<pre className="p-6">{`# 1. Load Necessary Libraries 
+library(ggplot2) 
+library(cluster) 
+
+# 2. Prepare the Data 
+data("iris") 
+# We remove the labels to make it strictly Unsupervised 
+iris_data <- iris[, c("Petal.Length", "Petal.Width")] 
+
+# --------------------------------------------------------- 
+# PART A: THE ELBOW METHOD (Finding Optimal K) 
+# --------------------------------------------------------- 
+# Calculate WCSS for k values from 1 to 10 
+wss <- sapply(1:10, function(k) { 
+  kmeans(iris_data, centers = k, nstart = 10)$tot.withinss 
+}) 
+
+# Plot the Elbow Curve 
+elbow_plot <- data.frame(k = 1:10, wss = wss) 
+ggplot(elbow_plot, aes(x = k, y = wss)) + 
+  geom_line(color = "blue") + 
+  geom_point(size = 3, color = "red") + 
+  labs(title = "Elbow Method for Optimal k", 
+       x = "Number of Clusters (k)", 
+       y = "Total Within-Cluster Sum of Squares (WSS)") + 
+  theme_minimal() 
+
+# --------------------------------------------------------- 
+# PART B: APPLYING K-MEANS ALGORITHM (Assuming K=3) 
+# --------------------------------------------------------- 
+set.seed(123)  # Ensure exact reproducibility 
+# centers = 3 dictates 'K', nstart = 10 dictates random initial configurations tried 
+kmeans_model <- kmeans(iris_data, centers = 3, nstart = 10) 
+
+# Add the resulting clusters back to the original dataset for plotting 
+iris$Cluster <- as.factor(kmeans_model$cluster) 
+
+# Visualize the Scatter Plot with Cluster Centers 
+centers <- as.data.frame(kmeans_model$centers) 
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Cluster)) + 
+  geom_point(size = 3) + 
+  geom_point(data = centers, aes(x = Petal.Length, y = Petal.Width), 
+             color = "black", size = 5, shape = 4) +  # The Centroids 
+  labs(title = "K-Means Clustering with Cluster Centers", 
+       x = "Petal Length", 
+       y = "Petal Width") + 
+  theme_minimal() +  
+  scale_color_manual(values = c("red", "blue", "green")) 
+
+# --------------------------------------------------------- 
+# PART C: SILHOUETTE PLOT EVALUATION 
+# --------------------------------------------------------- 
+# Scale the data and calculate the distance matrix (squared Euclidean) 
+data_scaled <- scale(iris[, 1:4]) 
+km_result <- kmeans(data_scaled, centers = 3, nstart = 25) 
+cluster_assignment <- km_result$cluster 
+distance_matrix <- dist(data_scaled)^2 
+
+# Compute and plot the silhouette values 
+sil_values <- silhouette(cluster_assignment, distance_matrix) 
+plot(sil_values, main = "Silhouette Plot for K-Means Clustering") `}</pre>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u3m5',
+    title: '5. Performance Evaluation Metrics',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Performance Evaluation Metrics (Cross-Cutting Topic)</h2>
+          <p className="mb-4">A top-tier data scientist proves their model's worth with hard math. Metrics for final model evaluation and outward presentation to stakeholders are strictly different from <em>loss functions</em> that algorithms use internally for optimization.</p>
+          <p className="mb-6 font-bold text-black">Let us master the absolute mathematical proofs for all three domains:</p>
+        </div>
+
+        <div className="pt-4 border-t border-gray-100">
+          <div className="border border-gray-200 rounded-3xl overflow-hidden shadow-sm mb-8">
+             <div className="bg-black text-white p-6">
+                <h3 className="text-2xl font-bold">1. Regression Metrics (Evaluating Continuous Predictions)</h3>
+                <p className="text-gray-300 mt-2">When evaluating models like Linear Regression, we measure the physical distances between our predicted values and the actual ground truth.</p>
+             </div>
+             <div className="p-6 space-y-4 bg-white">
+                <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  <strong className="text-black text-lg block mb-1">MSE (Mean Squared Error):</strong>
+                  <p className="text-sm text-gray-600">This is the most common metric for regression. It calculates the average of the squared differences between your estimated values and the actual values. Because the errors are squared, it heavily penalizes large mistakes.</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  <strong className="text-black text-lg block mb-1">RMSE (Root Mean Square Error/Deviation):</strong>
+                  <p className="text-sm text-gray-600">This is simply the square root of the MSE. We use this to evaluate overall prediction accuracy because taking the square root converts the error back into the original units of the target variable, making it much easier to interpret.</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  <strong className="text-black text-lg block mb-1">MAE (Mean Absolute Error):</strong>
+                  <p className="text-sm text-gray-600">Instead of squaring the differences, this calculates the average <em>absolute</em> difference between the estimated and actual values. It is highly useful when you do not want to aggressively penalize extreme outliers.</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                  <strong className="text-black text-lg block mb-1">R² (Coefficient of Determination):</strong>
+                  <p className="text-sm text-gray-600">This is a master metric. It represents the ratio between the variance of your model's predictions and the variance of the ground truth. It essentially tells you exactly how much of the variation in the dataset is successfully explained by your model.</p>
+                </div>
+             </div>
+          </div>
+
+          <div className="border border-gray-200 rounded-3xl overflow-hidden shadow-sm mb-8">
+             <div className="bg-gray-900 text-white p-6">
+                <h3 className="text-2xl font-bold">2. Classification Metrics (Evaluating Categorical Predictions)</h3>
+                <p className="text-gray-300 mt-2">For models like Logistic Regression and KNN, we cannot measure "distance" to an error. Instead, we derive our metrics from the <strong>Confusion Matrix</strong>, which counts True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN).</p>
+             </div>
+             <div className="p-6 space-y-4 bg-white">
+                <div className="border border-gray-200 p-4 rounded-xl">
+                  <strong className="text-black block mb-1">Precision:</strong>
+                  <p className="text-sm text-gray-600">This answers the question: <em>Out of all the items the model claimed were positive, how many were actually positive?</em> It is calculated as <code className="font-mono bg-gray-100 px-1 rounded">TP / (TP + FP)</code>.</p>
+                </div>
+                <div className="border border-gray-200 p-4 rounded-xl">
+                  <strong className="text-black block mb-1">Recall:</strong>
+                  <p className="text-sm text-gray-600">This answers: <em>Out of all the truly positive samples in the real world, how many did our model successfully find?</em> It is calculated as <code className="font-mono bg-gray-100 px-1 rounded">TP / (TP + FN)</code>.</p>
+                </div>
+                <div className="border border-gray-200 p-4 rounded-xl">
+                  <strong className="text-black block mb-1">Sensitivity:</strong>
+                  <p className="text-sm text-gray-600">This is another term for the True Positive recognition rate, measuring how well the model identifies the positive class (<code className="font-mono bg-gray-100 px-1 rounded">TP / P</code>).</p>
+                </div>
+                <div className="border border-gray-200 p-4 rounded-xl">
+                  <strong className="text-black block mb-1">Specificity:</strong>
+                  <p className="text-sm text-gray-600">This is the True Negative recognition rate, measuring how flawlessly your model identifies the negative class (<code className="font-mono bg-gray-100 px-1 rounded">TN / N</code>).</p>
+                </div>
+                <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl">
+                  <strong className="text-black block mb-1">F1-Score (F-measure):</strong>
+                  <p className="text-sm text-gray-700">Often, Precision and Recall are at odds with each other. The F1-Score acts as the ultimate balancing metric by calculating the <em>harmonic mean</em> of precision and recall. Its strict mathematical formula is <code className="font-mono bg-white border border-gray-200 px-1 rounded">2 × (Precision × Recall) / (Precision + Recall)</code>.</p>
+                </div>
+             </div>
+          </div>
+
+          <div className="border border-gray-200 rounded-3xl overflow-hidden shadow-sm">
+             <div className="bg-gray-800 text-white p-6">
+                <h3 className="text-2xl font-bold">3. Clustering Metrics (Evaluating Unsupervised Groupings)</h3>
+                <p className="text-gray-300 mt-2">In unsupervised models like K-Means, we do not have an "answer key" (no actual labels) to compare our predictions against. Therefore, we evaluate the geometric structure of the clusters themselves:</p>
+             </div>
+             <div className="p-6 space-y-4 bg-white text-sm">
+                <div className="border-l-4 border-gray-400 pl-4 py-2">
+                  <strong className="text-black block mb-1 text-base">Davies-Bouldin Index:</strong>
+                  <p className="text-gray-600">This measures the average similarity between each cluster and its most similar neighboring cluster. "Similarity" here is defined as the ratio of within-cluster distances to between-cluster distances. A score of zero is the absolute minimum; <em>lower</em> values indicate much better grouping because it means the clusters are tightly packed and physically further apart from each other.</p>
+                </div>
+                <div className="border-l-4 border-gray-400 pl-4 py-2">
+                  <strong className="text-black block mb-1 text-base">Dunn Index:</strong>
+                  <p className="text-gray-600">This calculates the ratio of the minimum inter-cluster distance (the distance between different clusters) to the maximum intra-cluster distance (the spread within a single cluster). It is the ultimate measure of cluster compactness and separation.</p>
+                </div>
+                <div className="border-l-4 border-gray-400 pl-4 py-2">
+                  <strong className="text-black block mb-1 text-base">Silhouette Score:</strong>
+                  <p className="text-gray-600">This measures exactly how similar a data point is to its own assigned cluster compared to other clusters. The value strictly ranges from -1 to +1. A score close to +1 means the point is perfectly clustered, 0 indicates dangerous cluster overlap, and -1 indicates the point has been completely misclassified into the wrong group.</p>
+                </div>
+                <div className="border-l-4 border-gray-400 pl-4 py-2">
+                  <strong className="text-black block mb-1 text-base">Inertia (Sum of Squared Errors):</strong>
+                  <p className="text-gray-600">This measures the sum of the squared distances between each individual data point and its assigned cluster centroid, strictly evaluating the internal compactness of your clusters.</p>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+];
+
 function DashboardScreen({ subject, onBack }) {
   // State to track which module is selected in the sidebar
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
 
-  const activeData = subject === 'Unit 2: EDA and Visualization Using R' ? unit2Modules : dmvModules;
+  const activeData = subject?.includes('Unit 3') 
+    ? unit3Modules 
+    : subject?.includes('Unit 2') 
+      ? unit2Modules 
+      : dmvModules;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
