@@ -109,6 +109,7 @@ function SubjectSelectionScreen({ onBack, onSelect }) {
     { id: 1, title: 'Unit 1: Data Modeling and Visualization', category: 'Chapter 1' },
     { id: 2, title: 'Unit 2: EDA and Visualization Using R', category: 'Chapter 2' },
     { id: 3, title: 'Unit 3: Regression, Classification & Clustering', category: 'Chapter 3' },
+    { id: 4, title: 'Unit 4: Advanced Data Visualization', category: 'Chapter 4' },
   ];
 
   return (
@@ -1882,15 +1883,357 @@ plot(sil_values, main = "Silhouette Plot for K-Means Clustering") `}</pre>
   }
 ];
 
+// --- DATA CONTENT FROM DMV UNIT 4 ---
+const unit4Modules = [
+  {
+    id: 'u4m1',
+    title: '1. Storytelling with Data',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Storytelling with Data</h2>
+          <p className="mb-4">Advanced Data Visualization and mastering this is what separates a standard coder from an elite data architect. Data alone is not enough; you must build a narrative to influence your audience.</p>
+          <div className="bg-black text-white p-6 rounded-2xl shadow-xl mt-6">
+            <p className="text-sm leading-relaxed">Data storytelling is the structured, narrative approach to communicating insights from data, combining compelling visuals with a clear, engaging storyline to make complex data understandable and actionable. It goes far beyond simply displaying graphs; it provides crucial context, reveals trends, and highlights the "why" behind the numbers.</p>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-6 text-black">1. The Key Elements of Data Storytelling</h3>
+          <p className="mb-6">To build a compelling narrative, you must perfectly balance four intersecting elements:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+               <strong className="text-black text-lg block mb-2 border-b border-gray-200 pb-2">Data (The Foundation)</strong>
+               <p className="text-sm text-gray-600">Without solid, accurate, and relevant data, your story loses all credibility. Your raw facts and figures must be rigorously cleaned and processed before they can form the foundation of your narrative.</p>
+            </div>
+            <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+               <strong className="text-black text-lg block mb-2 border-b border-gray-200 pb-2">Visuals (The Lens)</strong>
+               <p className="text-sm text-gray-600">Visuals, such as charts and dashboards, make complex data easily digestible. They highlight hidden patterns, trends, and outliers that would otherwise remain buried in a spreadsheet.</p>
+            </div>
+            <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+               <strong className="text-black text-lg block mb-2 border-b border-gray-200 pb-2">Narrative (The "Why")</strong>
+               <p className="text-sm text-gray-600">The story provides the necessary context. It uses the data to explain exactly what happened, why it matters, and what the business should do next (the call to action). A strong narrative shapes your information into a story that informs and influences the viewer.</p>
+            </div>
+            <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+               <strong className="text-black text-lg block mb-2 border-b border-gray-200 pb-2">Audience (The Target)</strong>
+               <p className="text-sm text-gray-600">You must tailor your presentation to guide audience understanding and connect insights with a real-world context. For example, executives need the "big picture," while engineers demand to know the exact "how".</p>
+            </div>
+          </div>
+          <div className="mt-6 p-5 border-l-4 border-black bg-gray-50">
+             <strong className="text-black block mb-1">The Intersection:</strong>
+             <p className="text-sm">When you successfully combine narrative, visuals, and data, you simplify complicated information so your audience can engage with your content. Pairing emotion with hard evidence helps your audience understand the impact and make highly confident decisions.</p>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. The Importance of a Strong Data Story</h3>
+          <p className="mb-4">Why must a top-tier data scientist master this?</p>
+          <ul className="space-y-3">
+             <li className="flex items-start gap-3">
+               <CheckCircle2 size={18} className="text-black mt-0.5 flex-shrink-0" />
+               <span className="text-sm text-gray-700">It simplifies complexity and makes intricate data easy to understand for non-technical stakeholders.</span>
+             </li>
+             <li className="flex items-start gap-3">
+               <CheckCircle2 size={18} className="text-black mt-0.5 flex-shrink-0" />
+               <span className="text-sm text-gray-700">It adds a vital human touch and contextual relevance to raw, cold numbers.</span>
+             </li>
+             <li className="flex items-start gap-3">
+               <CheckCircle2 size={18} className="text-black mt-0.5 flex-shrink-0" />
+               <span className="text-sm text-gray-700">It dramatically speeds up decision-making and supports core business strategies by communicating actionable insights clearly.</span>
+             </li>
+          </ul>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-6 text-black">3. The 5 Strict Steps to Visual Data Storytelling</h3>
+          <p className="mb-6">You must memorize this exact professional workflow, my student:</p>
+          <div className="space-y-6 relative">
+            <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gray-200 hidden md:block"></div>
+            
+            <div className="relative z-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm md:ml-12">
+              <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">1</div>
+              <h4 className="text-lg font-bold text-black mb-2">Identify Your Story (Define Objective)</h4>
+              <p className="text-sm text-gray-600">Before analyzing any data, define the core message or the "why" behind your research. You must identify the specific question you are trying to answer, define your ultimate goal, and establish a narrative structure with a clear beginning (context), middle (data insights), and end (actionable advice).</p>
+            </div>
+            
+            <div className="relative z-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm md:ml-12">
+              <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">2</div>
+              <h4 className="text-lg font-bold text-black mb-2">Collect & Prepare Data</h4>
+              <p className="text-sm text-gray-600">Gather the necessary data from reliable sources like internal databases or external reports. You must rigorously clean the data by removing errors and duplicates to ensure absolute reliability. Crucially, you must look at the whole picture and filter irrelevant information without "cherry-picking" data just to support a predetermined theory.</p>
+            </div>
+
+            <div className="relative z-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm md:ml-12">
+              <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">3</div>
+              <h4 className="text-lg font-bold text-black mb-2">Beware of Your Audience</h4>
+              <p className="text-sm text-gray-600">Tailor your story entirely to the needs and expertise of your viewers. Identify your stakeholders, gauge their specific data literacy to determine how complex your charts can be, and focus your narrative strictly around the pain points they care about most.</p>
+            </div>
+
+            <div className="relative z-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm md:ml-12">
+              <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">4</div>
+              <h4 className="text-lg font-bold text-black mb-2">Transform Data into Visualization</h4>
+              <p className="text-sm text-gray-600">Select the absolute best visual representation to convey your insights efficiently. Use line charts for trends, bar charts for comparisons, and scatter plots for correlations. You must highlight key elements using color and size, and ruthlessly declutter your charts by removing unnecessary grids, 3D effects, and excessive colors.</p>
+            </div>
+
+            <div className="relative z-10 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm md:ml-12">
+              <div className="absolute -left-12 top-6 w-6 h-6 bg-black text-white rounded-full hidden md:flex items-center justify-center text-xs font-bold ring-4 ring-white">5</div>
+              <h4 className="text-lg font-bold text-black mb-2">Generate Insights & Narrate</h4>
+              <p className="text-sm text-gray-600">Finally, do not just show a chart; explain the real-world context and the "why" behind the visualization. Provide a strict "So What?" by concluding with highly actionable recommendations based on your findings. Lastly, iterate and refine your presentation based on stakeholder feedback to ensure the story remains perfectly clear and compelling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u4m2',
+    title: '2. Interactive & Dynamic Visualizations',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Interactive and Dynamic Visualizations</h2>
+          <p className="mb-4">We will move beyond static charts and learn how to build systems where users can explore data in real-time. Let us rigorously dissect the four core architectural pillars of interactive systems so you can build flawless applications:</p>
+        </div>
+
+        <div className="border border-gray-200 rounded-3xl overflow-hidden shadow-sm">
+          <div className="bg-black text-white p-6 md:p-8">
+            <h3 className="text-2xl font-bold">1. Dashboards (The Command Center)</h3>
+            <p className="text-gray-300 mt-2">A dashboard is a consolidated visual display of the most important information needed to achieve specific objectives, strictly arranged on a single screen.</p>
+          </div>
+          <div className="p-6 md:p-8 space-y-6 bg-white">
+            <div>
+              <strong className="text-black text-lg block mb-1">The Architecture:</strong>
+              <p className="text-sm text-gray-600">Unlike standard reports that span multiple pages, a true dashboard is a single-page view. It combines various components like <strong>KPI Cards</strong> (to track the most critical business metrics like Total Sales or Profit in real time), <strong>Charts</strong> (like Bar or Line graphs), and <strong>Maps</strong> for regional analysis.</p>
+            </div>
+            <div>
+              <strong className="text-black text-lg block mb-1">The Advantage:</strong>
+              <p className="text-sm text-gray-600">Dashboards consolidate data from multiple different sources into a unified view, enabling executives to perform real-time monitoring and make incredibly fast decisions. Because they are highly interactive, a single well-designed dashboard can answer multiple business questions, completely eliminating the need to create dozens of separate, static reports.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. Hierarchies & Drill-Downs (Managing Data Depth)</h3>
+          <p className="mb-4 text-sm">If you try to show every single data point at once, your dashboard will become cluttered and unreadable. You must structure your data using Hierarchies.</p>
+          <div className="space-y-4">
+             <div className="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black block mb-2">Hierarchies:</strong>
+                <p className="text-sm text-gray-600">This is a structured arrangement of data into multiple logical levels. For example, a Time Hierarchy moves strictly from <code className="font-mono px-1">Year → Quarter → Month → Day</code>, and a Location Hierarchy moves from <code className="font-mono px-1">Country → State → City</code>. This keeps dashboards clean by showing highly aggregated, summary information first.</p>
+             </div>
+             <div className="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black block mb-2">Drill-Downs:</strong>
+                <p className="text-sm text-gray-600">This is the interactive feature that makes hierarchies powerful. It allows a user to click on a summary data point and dive directly into the granular details. For instance, if an executive clicks on the "2024" bar in a chart, the visual instantly drill-downs to reveal the individual monthly sales for that specific year. You can also use <strong>Drill-Up</strong> to reverse the action and return to the summary view.</p>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">3. Filters & Slicers (Targeting Specific Insights)</h3>
+          <p className="mb-4 text-sm">You must give your users the power to isolate specific scenarios without permanently altering your underlying dataset. We do this using two specific controls:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black block mb-2 border-b pb-2">Slicers (The Canvas Tools):</strong>
+                <p className="text-sm text-gray-600 mt-2">Slicers are interactive visual controls placed directly on the report canvas. They provide a highly user-friendly way for non-technical users to filter data (like selecting a specific region or time period) without needing to open hidden menus. You can format them as dropdowns, interactive buttons, or sliding scales for continuous dates.</p>
+             </div>
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black block mb-2 border-b pb-2">Filters (The Backend Logic):</strong>
+                <p className="text-sm text-gray-600 mt-2">Filters operate to explicitly control what data is shown across the visuals. As the architect, you will apply <strong>Basic Filtering</strong> (selecting checkboxes from a list), <strong>Advanced Filtering</strong> (applying strict mathematical conditions, such as only showing sales "greater than $10,000"), and <strong>TOP N Filtering</strong> (restricting the visual to only show the absolute highest or lowest performers, such as the Top 3 Regions).</p>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">4. Animations (Visualizing Change)</h3>
+          <p className="mb-4 text-sm">Animations bring your data to life by applying visual transitions and dynamic effects that show exactly how data changes over time or responds to user interaction.</p>
+          <ul className="space-y-4">
+             <li className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+               <strong className="text-black block mb-1">Time-Based Animations:</strong>
+               <p className="text-sm text-gray-600">By using a custom visual like a "Play Axis", you can add a play button to your dashboard that automatically animates a chart's growth from, for example, 2020 to 2025.</p>
+             </li>
+             <li className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+               <strong className="text-black block mb-1">Cross-Filtering Animations:</strong>
+               <p className="text-sm text-gray-600">When a user clicks on one specific chart (like selecting "Electronics" in a pie chart), all other charts on the dashboard dynamically animate and update to show only the data related to Electronics.</p>
+             </li>
+          </ul>
+          <div className="mt-4 p-4 border-l-4 border-black">
+             <strong className="text-black block mb-1">The Purpose:</strong>
+             <p className="text-sm text-gray-600">These smooth transitions do more than just look impressive; they improve the audience's understanding of data flow, highlight trends over time, and massively enhance user engagement.</p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u4m3',
+    title: '3. Geospatial Visualization',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Geospatial Visualization</h2>
+          <p className="mb-4">You will learn to map complex datasets to physical, real-world locations to identify regional patterns.</p>
+        </div>
+
+        <div className="space-y-8">
+           <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-black">1. Maps and Spatial Analysis</h3>
+              <p className="text-sm text-gray-600 mb-3">Before we draw anything, we must understand the analytics behind it. Spatial analysis examines relationships, patterns, and trends in data with respect to its geographic location.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">The Techniques:</strong> As a data architect, you will use techniques like proximity analysis, clustering, interpolation, and density mapping to understand exactly how phenomena vary over physical space.</li>
+                <li><strong className="text-black">The Business Application:</strong> In the business world, this analysis is crucial because it helps identify market potential, service coverage gaps, and specific risk zones.</li>
+              </ul>
+           </div>
+
+           <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-black">2. Filled Maps & Choropleth Maps</h3>
+              <p className="text-sm text-gray-600 mb-3">When you need to show aggregated values across distinct regions, you will use Choropleth (or filled) maps.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">The Architecture:</strong> These maps use shading, tinting, or patterns to display how a value differs in proportion across a specific geography. They shade geographic areas—like countries, states, or districts—based strictly on numerical values or categories.</li>
+                <li><strong className="text-black">The Visual Engine:</strong> Color gradients represent magnitude; for example, darker colors indicate higher sales or greater frequency, while light colors indicate lower values.</li>
+                <li><strong className="text-black">The Purpose:</strong> Crucially, choropleth maps show us how values change across defined geographical or political boundaries, rather than molding continuous areas according to value. They are incredibly intuitive for high-level comparisons across regions.</li>
+              </ul>
+           </div>
+
+           <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-black">3. ArcGIS Maps</h3>
+              <p className="text-sm text-gray-600 mb-3">When standard maps are not enough, a top-tier data scientist relies on ArcGIS for Power BI. This is an Esri visual that adds highly advanced geospatial capabilities well beyond standard maps.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">Advanced Features:</strong> It allows you to use custom basemaps (like satellite or street views), reference layers, demographic data, and complex spatial analysis tools like drive-time areas.</li>
+                <li><strong className="text-black">Clustering:</strong> You can perform advanced clustering to group nearby points together, making it effortless to identify hotspots or underlying patterns in massively large point datasets.</li>
+                <li><strong className="text-black">Integration:</strong> Its tight integration with ArcGIS Online lets you bring external geographic datasets directly into your dashboards for richer, real-world insight.</li>
+              </ul>
+           </div>
+
+           <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-black">4. Heatmaps (Spatial)</h3>
+              <p className="text-sm text-gray-600 mb-3">If you plot thousands of individual customers on a map, it becomes an unreadable mess. This is where you deploy a Heatmap.</p>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-600">
+                <li><strong className="text-black">The Architecture:</strong> Heatmaps depict the density or intensity of spatial data using continuous color gradients.</li>
+                <li><strong className="text-black">Hotspots:</strong> High-density areas appear in visually "warmer" colors, instantly drawing the viewer's attention to critical hotspots that may require immediate action.</li>
+                <li><strong className="text-black">The Purpose:</strong> They are mathematically necessary when individual data points (such as crime incidents or customer visits) are too numerous to interpret on a standard point map. They support high-level decisions, such as where to open a new service location or increase security.</li>
+              </ul>
+           </div>
+
+           <div className="pt-6 border-t border-gray-100 bg-black text-white p-6 rounded-2xl shadow-xl mt-6">
+              <h3 className="text-2xl font-bold tracking-tight mb-3 text-white">5. 3D Maps</h3>
+              <p className="text-sm text-gray-300 mb-4">Finally, to truly impress your stakeholders and add a new dimension to your data, you must understand 3D mapping. <strong>The Architecture:</strong> 3D visualizations utilize height, depth, and perspective to accurately display location-based data, density, magnitude, and trends over time.</p>
+              <strong className="block mb-2 text-white border-b border-gray-700 pb-1">Core Types:</strong>
+              <ul className="list-disc pl-5 text-sm space-y-2 text-gray-400">
+                <li><strong className="text-white">3D Column Maps:</strong> Vertical bars physically rise from the map to represent values (e.g., a higher bar equals higher sales in a specific city).</li>
+                <li><strong className="text-white">3D Bubble Maps:</strong> Hovering bubbles represent magnitude, such as population density.</li>
+                <li><strong className="text-white">3D Heatmaps:</strong> These use color to represent data density in a 3D space, making areas of high and low concentration easily identifiable for applications like tracking disease outbreak patterns or traffic congestion.</li>
+              </ul>
+           </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'u4m4',
+    title: '4. Network Visualization & Case Studies',
+    content: (
+      <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div>
+          <h2 className="text-3xl font-medium tracking-tight mb-4 text-black">Network Visualization</h2>
+          <p className="mb-4">Finally, we will visualize complex many-to-many relationships that are impossible to see in standard tables.</p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">1. Graph Theory Concepts: Nodes and Edges</h3>
+          <p className="mb-4 text-sm">A network is fundamentally built on two core components: Nodes and Edges. Correctly defining these is essential because it determines exactly what patterns your analysis will reveal.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-2 border-b pb-2">Nodes (The Entities)</strong>
+                <p className="text-sm text-gray-600 mb-2">Nodes represent the individual entities within your network, such as people, computers, or bank accounts. In your visual layouts, nodes will typically appear as points, circles, or icons.</p>
+                <div className="bg-black text-white p-3 rounded-lg text-xs italic">
+                  <strong>Architectural Tip:</strong> You can encode deep information into nodes by changing their visual attributes. For example, you can change a node's size or color to represent its category or its mathematical importance.
+                </div>
+             </div>
+             <div className="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-2 border-b pb-2">Edges (The Relationships)</strong>
+                <p className="text-sm text-gray-600 mb-2">Edges are the connections linking your entities together, visually represented as lines or arrows.</p>
+                <ul className="list-disc pl-4 text-xs text-gray-600 space-y-1">
+                  <li><strong>Weighted Edges:</strong> Edges are not always equal. They can be "weighted" to carry critical additional information, such as the frequency of communication, the cost of a transaction, or the capacity of a network route. You can visually represent this by changing the thickness or style of the line.</li>
+                  <li><strong>Network Integrity:</strong> You must understand the structural difference between the two: if you remove an edge, you only break one specific relationship, but if you remove a crucial node, you can disconnect entire sections of the network.</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-gray-100">
+          <h3 className="text-2xl font-bold tracking-tight mb-4 text-black">2. Centrality: Finding the "Hubs"</h3>
+          <p className="mb-4 text-sm">Once you have mapped the nodes and edges, you must use pure mathematics to find the most powerful entities in the network. We do this using <strong>Centrality</strong>, which quantifies the exact importance or influence of a node based purely on its geometric position within the network. Nodes with high centrality act as the ultimate hubs, brokers, or authorities.</p>
+          <div className="space-y-4">
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-1">A. Degree Centrality (The Immediate Hubs)</strong>
+                <p className="text-sm text-gray-600 mb-2">This is the strict mathematical count of how many direct connections a node possesses. If you are analyzing a directed graph (where relationships have a specific direction), this is split into <em>indegree</em> (incoming edges) and <em>outdegree</em> (outgoing edges).</p>
+                <p className="text-sm text-gray-500 italic bg-gray-50 p-2 rounded"><strong>Business Application:</strong> Nodes with high degree centrality are "immediate hubs" that can reach many other nodes quickly. In a company, this might be a highly connected key employee or a central call center. In fraud detection, a node with an unusually high or low degree can instantly flag suspicious behavior.</p>
+             </div>
+             <div className="border border-gray-200 p-5 rounded-xl">
+                <strong className="text-black text-lg block mb-1">B. Betweenness Centrality (The Bridges)</strong>
+                <p className="text-sm text-gray-600 mb-2">This is a highly advanced metric that measures exactly how often a specific node lies on the <em>shortest paths</em> between other pairs of nodes. Nodes with high betweenness act as critical "bridges" or "brokers." They control the flow of information between completely different, isolated groups in the network.</p>
+                <p className="text-sm text-gray-500 italic bg-gray-50 p-2 rounded"><strong>Business Application:</strong> Because these nodes control the flow, removing them can completely fragment the network into disconnected pieces. In a fraud ring, these actors are essential to operation.</p>
+             </div>
+          </div>
+        </div>
+
+        <div className="pt-10 border-t border-gray-100">
+          <h3 className="text-3xl font-bold tracking-tight mb-6 text-black text-center">Real-Time Case Studies</h3>
+          <p className="text-center mb-8 text-gray-600">Let us rigorously dissect how network visualization is applied in two critical real-time case studies.</p>
+
+          <div className="space-y-8">
+             <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                <div className="bg-red-600 text-white p-6">
+                   <h4 className="text-xl font-bold">Case Study 1: Detecting Fraud Rings</h4>
+                   <p className="text-red-100 text-sm mt-1">In the financial and cybersecurity sectors, fraudsters rarely act alone; they create sophisticated webs of deception. Standard relational databases often fail to catch them, but network visualization exposes their entire operation.</p>
+                </div>
+                <div className="p-6">
+                   <ul className="space-y-3 text-sm text-gray-600">
+                     <li><strong className="text-black">The Network Architecture:</strong> In this scenario, nodes represent entities like bank accounts or individuals, and the edges represent the financial transactions or intermediaries connecting them.</li>
+                     <li><strong className="text-black">Spotting the Anomalies:</strong> By visualizing the network, you can instantly identify highly unusual geometric structures that indicate organized crime, such as tightly knit fraud rings, star-shaped transaction patterns, or long chains of "mule" accounts used to launder money.</li>
+                     <li><strong className="text-black">Applying Centrality:</strong> We use our mathematical centrality measures (like degree and betweenness) to clearly distinguish normal, everyday users from suspicious actors who act as hubs or bridges for illegal funds.</li>
+                     <li><strong className="text-black">Dynamic Tracking:</strong> Because fraud evolves, a top data scientist uses time-based filtering to watch exactly how fraudulent behavior spreads across the network over time.</li>
+                     <li><strong className="text-black">The Ultimate Solution:</strong> By combining these visual network patterns with advanced machine learning models, institutions can drastically improve the early detection of fraudulent transactions before the money disappears.</li>
+                   </ul>
+                </div>
+             </div>
+
+             <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-md">
+                <div className="bg-blue-600 text-white p-6">
+                   <h4 className="text-xl font-bold">Case Study 2: Social Network Analysis (SNA)</h4>
+                   <p className="text-blue-100 text-sm mt-1">Companies use network visualization to understand exactly how information, trends, and influence flow through platforms like Twitter, LinkedIn, or Facebook.</p>
+                </div>
+                <div className="p-6">
+                   <ul className="space-y-3 text-sm text-gray-600">
+                     <li><strong className="text-black">The Network Architecture:</strong> Here, the nodes represent individual people or user accounts, while the edges represent their social relationships, such as friendships, follows, or direct messages.</li>
+                     <li><strong className="text-black">Mapping the Communities:</strong> The visual layout of the graph allows you to instantly see hidden social structures, including distinct clusters (tight communities), bridges connecting different groups, and isolated users who do not interact much.</li>
+                     <li><strong className="text-black">Finding the True Influencers:</strong> This is where you apply Centrality! By calculating centrality measures, you can mathematically highlight the true influencers and brokers—the exact nodes that have the power to spread information or viral content most widely across the network.</li>
+                     <li><strong className="text-black">Adding Context (Attribute Overlay):</strong> To take your analysis to the next level, you can overlay specific attributes—like user demographics or sentiment—directly onto the nodes. This allows you to deeply understand the characteristics and emotions of different social groups.</li>
+                     <li><strong className="text-black">The Business Value:</strong> Armed with this network map, a company can design highly targeted marketing campaigns or plan strategic interventions within specific online communities, maximizing their return on investment.</li>
+                   </ul>
+                </div>
+             </div>
+             
+             <div className="bg-gray-900 text-white p-6 rounded-2xl shadow-xl mt-6 text-center">
+                <h4 className="font-bold text-lg text-white mb-2">Bonus Application: Communication Networks</h4>
+                <p className="text-sm text-gray-300">To further impress your examiners, you should also note that these exact same principles apply to IT and Communication Networks. By mapping devices and routers as nodes, network visualization reveals network topology, dangerous bottlenecks, and single points of failure. Applying centrality here reveals critical routers whose failure would severely crash the entire communication system.</p>
+             </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+];
+
 function DashboardScreen({ subject, onBack }) {
   // State to track which module is selected in the sidebar
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
 
-  const activeData = subject?.includes('Unit 3') 
-    ? unit3Modules 
-    : subject?.includes('Unit 2') 
-      ? unit2Modules 
-      : dmvModules;
+  const activeData = subject?.includes('Unit 4') 
+    ? unit4Modules
+    : subject?.includes('Unit 3') 
+      ? unit3Modules 
+      : subject?.includes('Unit 2') 
+        ? unit2Modules 
+        : dmvModules;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
